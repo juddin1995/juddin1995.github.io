@@ -7,10 +7,10 @@
 }
 
 body {
-    background-color: orangered;
-    color: white;
     margin: 0;
     font-family: 'pkmn_rbygscregular';
+    background-image: url('https://images6.alphacoders.com/661/661968.png');
+    background-repeat: no-repeat;
 }
 
 .container {
@@ -21,22 +21,31 @@ body {
 h1 {
     text-transform: uppercase;
     text-align: center;
-    font-size: 54px;
+    font-size: 44px;
+    color: rgb(167, 188, 245);
+}
+
+#search {
+    text-align: center;
 }
 
 #pokedex {
+    margin: 4% 22%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template: repeat(1, 350px)/repeat(3, 200px);
     grid-gap: 20px;
-    padding-inline-start: 0;
+    position: absolute;
+    
 }
 
 .card {
     list-style: none;
     padding: 40px;
     background-color: #f4f4f4;
+    /* background-image: url("pokecard.png"); */
+    background-size: cover;
     color: #222;
-  text-align: center;
+    text-align: center;
 }
 
 .card:hover {
@@ -46,17 +55,18 @@ h1 {
 .card-title {
     text-transform: capitalize;
     margin-bottom: 0px;
-    font-size: 32px;
+    font-size: 60%;
     font-weight: normal;
 }
 .card-subtitle {
     margin-top: 5px;
     color: #666;
     font-weight: lighter;
+    font-size: 50%;
 }
 
 .card-image {
-    height: 180px;
+    height: 50%;
 }
 
 @keyframes bounce {

@@ -2,7 +2,6 @@
 <html>
   <head>    
     <meta charset="UTF-8">
-    <meta name="viewport" content="width-device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie-edge">
     <title>Pokedex</title>
     <link rel="stylesheet" href="style.css"/>
@@ -10,6 +9,15 @@
   
   <body>
   <h1>Jomir's Pokedex</h1>
+
+
+  
+  <form id="search"> 
+    Please enter the pokemon number: <input type="text"> <button type="button" id="searchbtn" onclick="queryPokemonAPI()">Random</button>
+  </form>
+
+  <p></p>
+  
   <ul id="pokedex"></ul>
   <script src="script.js"></script>
   </body>
