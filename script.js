@@ -1,32 +1,49 @@
-class Trainer{
-    constructor(){
-      this.pokemon=[];
+queryPokemonAPI = () => {
+  for(let i = 1; i <= 3; i++){
+      var x = parseInt(prompt("Enter a pokemon id"))
+      fetch(`https://fizal.me/pokeapi/api/v2/id/${x}.json`)
+      .then((resp) => { return resp.json()})
+      .then((data => {
+          console.log(data)
+
+          pokemon = new Pokemon(data)
+          jomir.addPokemonToParty(pokemon)
+      }))
     }
-    all(){
-      return this.pokemon;
-    }
-    add(pokemons){
-      this.pokemon.push(pokemons);
-    }
-    get(name){
-      for(let i=0; i<this.pokemon.length; i++){
-        if (name === this.pokemon[i].name){
-          return this.pokemon[i];
-        }
+}
+
+class Trainer {
+  constructor() {
+      this.party = []
+  }
+
+  all = () => {
+      return this.party
+  }
+
+  get = (name) => {
+      for (let i = 0; i < this.party.length; i++) {
+          if (name == this.party[i].name) {
+              return this.party[i]
+          }
       }
-    }
+  }
+
+  addPokemonToParty(pokemon) {
+      if (this.party.length < 3) {
+          this.party.push(pokemon)
+      }
+  }
 }
 
 class Pokemon {
     constructor(data) {
-      this.name = name;
-      this.sprite = sprite;
-      this.hp= hp;
-      this.attack = attack;
-      this.defense = defense;
-      this.ability = ability;
-      this.page = page
-      this.container = document.querySelector('#pokemonStats'+page);
+      this.name = data["name"];
+      this.sprites = data.sprites.front_default;
+      this.hp = data.stats[4].base_stat;
+      this.attack = data.stats[5].base_stat;
+      this.defense = data.stats[3].base_stat;
+      this.ability = data.ability;
       this.element = document.createElement("div")
     }
     display(){
@@ -41,7 +58,7 @@ class Pokemon {
       this.element.appendChild(hp)
       this.container.appendChild(this.element)
       let attack = document.createElement('h3')
-      attack.innerHTML = "Attack: " + this.attack
+      attack.innerHTML = "Attack: " + this.attac  
       this.element.appendChild(attack)
       this.container.appendChild(this.element)
       let defense = document.createElement('h3')
@@ -56,25 +73,13 @@ class Pokemon {
     }
 }
 
+jomir = new Trainer()
+
 const pokedex = document.getElementById("pokedex");
 
 console.log(pokedex)
 
 var i = document.getElementById("search")
-
-// number randomizer
-
-queryPokemonAPI = () => {
-    for(let i = 1; i <= 3; i++){
-        var x = parseInt(prompt("Enter a pokemon id"))
-        fetch(`https://fizal.me/pokeapi/api/v2/id/${x}.json`)
-        .then((resp) => { return resp.json()})
-        .then((data => {
-            console.log(data)
-        }
-    ))
-}
-}
 
 
 
