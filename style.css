@@ -18,6 +18,11 @@ body {
     margin: 0 auto;
 }
 
+#page {
+    display: grid;
+    grid-template-columns: repeat(3 , 200px);
+}
+
 h1 {
     text-transform: uppercase;
     text-align: center;

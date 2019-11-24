@@ -1,77 +1,83 @@
 queryPokemonAPI = () => {
-  for(let i = 1; i <= 3; i++){
-      var x = parseInt(prompt("Enter a pokemon id"))
-      fetch(`https://fizal.me/pokeapi/api/v2/id/${x}.json`)
-      .then((resp) => { return resp.json()})
+  for (let i = 1; i <= 3; i++) {
+    var x = parseInt(prompt("Enter a pokemon id"))
+    fetch(`https://fizal.me/pokeapi/api/v2/id/${x}.json`)
+      .then((resp) => {
+        return resp.json()
+      })
       .then((data => {
-          console.log(data)
+        console.log(data)
 
-          pokemon = new Pokemon(data)
-          jomir.addPokemonToParty(pokemon)
+        pokemon = new Pokemon(data)
+        jomir.addPokemonToParty(pokemon)
+        pokemon.display()
       }))
-    }
+  }
 }
 
 class Trainer {
   constructor() {
-      this.party = []
+    this.party = []
   }
 
   all = () => {
-      return this.party
+    return this.party
   }
 
   get = (name) => {
-      for (let i = 0; i < this.party.length; i++) {
-          if (name == this.party[i].name) {
-              return this.party[i]
-          }
+    for (let i = 0; i < this.party.length; i++) {
+      if (name == this.party[i].name) {
+        return this.party[i]
       }
+    }
   }
 
   addPokemonToParty(pokemon) {
-      if (this.party.length < 3) {
-          this.party.push(pokemon)
-      }
+    if (this.party.length < 3) {
+      this.party.push(pokemon)
+    }
   }
 }
 
 class Pokemon {
-    constructor(data) {
-      this.name = data["name"];
-      this.sprites = data.sprites.front_default;
-      this.hp = data.stats[4].base_stat;
-      this.attack = data.stats[5].base_stat;
-      this.defense = data.stats[3].base_stat;
-      this.ability = data.ability;
-      this.element = document.createElement("div")
-    }
-    display(){
-      let pokeImage = document.getElementById('Img'+ this.page);
-      pokeImage.src = this.sprite;
-      let name = document.createElement('h2')
-      name.innerHTML = "Name: " + this.name
-      this.element.appendChild(name)
-      this.container.appendChild(this.element)
-      let hp = document.createElement('h3')
-      hp.innerHTML = "HP: " + this.hp
-      this.element.appendChild(hp)
-      this.container.appendChild(this.element)
-      let attack = document.createElement('h3')
-      attack.innerHTML = "Attack: " + this.attac  
-      this.element.appendChild(attack)
-      this.container.appendChild(this.element)
-      let defense = document.createElement('h3')
-      defense.innerHTML = "Defense: " + this.defense
-      this.element.appendChild(defense);
-      this.container.appendChild(this.element)
-      let ability = document.createElement('h3')
-      ability.innerHTML = "Ability: " + this.ability
-      this.element.appendChild(ability)
-      this.container.appendChild(this.element)
-      console.log(this.ability);
-    }
+  constructor(data) {
+    this.name = data["name"];
+    this.sprite = data.sprites.front_default;
+    this.hp = data.stats[4].base_stat;
+    this.attack = data.stats[5].base_stat;
+    this.defense = data.stats[3].base_stat;
+    this.ability = data.abilities["0"].ability.name;
+  }
+  display() {
+    let grid = document.getElementById("page")
+
+    let pokeImage = document.createElement('img');
+    pokeImage.src = `${this.sprite}`;
+    grid.appendChild(pokeImage)
+
+    let name = document.createElement('h2')
+    name.innerHTML = "Name: " + this.name
+    grid.appendChild(name)
+
+    let hp = document.createElement('h3')
+    hp.innerHTML = "HP: " + this.hp
+    grid.appendChild(hp)
+
+    let attack = document.createElement('h3')
+    attack.innerHTML = "Attack: " + this.attack
+    grid.appendChild(attack)
+
+    let defense = document.createElement('h3')
+    defense.innerHTML = "Defense: " + this.defense
+    grid.appendChild(defense);
+
+    let ability = document.createElement('h3')
+    ability.innerHTML = "Ability: " + this.ability
+    grid.appendChild(ability)
+    console.log(this.ability);
+  }
 }
+
 
 jomir = new Trainer()
 
