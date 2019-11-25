@@ -22,7 +22,6 @@ class Trainer {
   }
 }
 
-
 class Pokemon {
   constructor(data) {
     this.name = data.name;
@@ -33,35 +32,38 @@ class Pokemon {
     this.ability = data.abilities["0"].ability.name;
   }
   display() {
-    let grid = document.getElementById("page")
+    let grid = document.getElementById("pokedex")
+
+    let div = document.createElement('div')
+    grid.appendChild(div)
+    div.className = "card"
 
     let pokeImage = document.createElement('img');
     pokeImage.src = `${this.sprite}`;
-    grid.appendChild(pokeImage)
+    div.appendChild(pokeImage)
 
     let name = document.createElement('h2')
     name.innerHTML = "Name: " + this.name
-    grid.appendChild(name)
+    div.appendChild(name)
 
     let hp = document.createElement('h3')
     hp.innerHTML = "HP: " + this.hp
-    grid.appendChild(hp)
+    div.appendChild(hp)
 
     let attack = document.createElement('h3')
     attack.innerHTML = "Attack: " + this.attack
-    grid.appendChild(attack)
+    div.appendChild(attack)
 
     let defense = document.createElement('h3')
     defense.innerHTML = "Defense: " + this.defense
-    grid.appendChild(defense);
+    div.appendChild(defense);
 
     let ability = document.createElement('h3')
     ability.innerHTML = "Ability: " + this.ability
-    grid.appendChild(ability)
+    div.appendChild(ability)
     console.log(this.ability);
   }
 }
-
 
 queryPokemonAPI = () => {
   for (let i = 1; i <= 3; i++) {
@@ -73,20 +75,10 @@ queryPokemonAPI = () => {
       .then((data => {
         console.log(data)
         pokemon = new Pokemon(data)
-        console.log(pokemon.name)
-        pokemon = new Pokemon(data)
         jomir.addPokemonToParty(pokemon)
         pokemon.display()
       }))
   }
 }
 
-jomir = new Trainer()
-
-const pokedex = document.getElementById("pokedex");
-
-console.log(pokedex)
-
-var i = document.getElementById("search")
-
-
+let jomir = new Trainer()

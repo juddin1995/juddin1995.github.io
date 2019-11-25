@@ -25,28 +25,21 @@ body {
     margin: 0 auto;
 }
 
-#page {
-    display: grid;
-    grid-template-columns: repeat(3 , 200px);
-    margin: auto;
-}
-
 h1 {
     text-transform: uppercase;
     text-align: center;
     font-size: 44px;
-    color: rgb(167, 188, 245);
+    color: black;
 }
 
 #search {
     text-align: center;
 }
 
-/*
- #pokedex {
-    margin: 4% 22%;
+#pokedex {
+    margin: 1% 8%;
     display: grid;
-    grid-template: repeat(1, 350px)/repeat(3, 200px);
+    grid-template: repeat(1, 450px)/repeat(3, 300px);
     grid-gap: 20px;
     position: absolute;
     
@@ -56,10 +49,9 @@ h1 {
     list-style: none;
     padding: 40px;
     background-color: #f4f4f4;
-    background-image: url("pokecard.png"); 
-    background-size: cover;
     color: #222;
     text-align: center;
+    opacity: 0.7;
 }
 
 .card:hover {
@@ -98,4 +90,4 @@ h1 {
         transform: translateY(0);
     }
 }
-*/
+
