@@ -20,10 +20,6 @@ body {
     z-index: 1;
 }
 
-.container {
-    padding: 40px;
-    margin: 0 auto;
-}
 
 h1 {
     text-transform: uppercase;
@@ -32,6 +28,9 @@ h1 {
     color: black;
 }
 
+#button {
+    text-align: center;
+}
 
 .myButton {
 	box-shadow: 3px 4px 0px 0px #8a2a21;
@@ -47,7 +46,6 @@ h1 {
 	padding:7px 25px;
 	text-decoration:none;
     text-shadow:0px 1px 0px #810e05;
-    align-self: center;
 }
 .myButton:hover {
 	background:linear-gradient(to bottom, #f24437 5%, #c62d1f 100%);
@@ -58,15 +56,12 @@ h1 {
 	top:1px;
 }
 
-
-
 #pokedex {
     margin: 1% 8%;
     display: grid;
     grid-template: repeat(1, 450px)/repeat(3, 300px);
     grid-gap: 20px;
-    position: absolute;
-    
+    position: absolute;  
 }
 
 .card {
@@ -75,7 +70,8 @@ h1 {
     background-color: #f4f4f4;
     color: #222;
     text-align: center;
-    opacity: 0.7;
+    text-transform: capitalize;
+    opacity: 0.75;
 }
 
 .card:hover {
@@ -93,10 +89,6 @@ h1 {
     color: #666;
     font-weight: lighter;
     font-size: 50%;
-}
-
-.card-image {
-    height: 50%;
 }
 
 @keyframes bounce {

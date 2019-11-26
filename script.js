@@ -61,7 +61,6 @@ class Pokemon {
     let ability = document.createElement('h3')
     ability.innerHTML = "Ability: " + this.ability
     div.appendChild(ability)
-    console.log(this.ability);
   }
 }
 
